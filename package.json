@@ -1,0 +1,21 @@
+{
+  "name": "GraphqlSub",
+  "version": "1.0.0",
+  "engines": {
+    "node": "^11.0.0"
+  },
+  "description": "WS communication with GraphQL Subscriptions and React Relay",
+  "author": "Robert J Hemphill <bob.hemphill@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "predev": "yarn build",
+    "dev": "node server/build",
+    "build": "tsc -p server/tsconfig.json"
+  },
+  "dependencies": {
+    "typescript": "^3.5.1"
+  },
+  "devDependencies": {
+    "@types/node": "^12.0.4"
+  }
+}

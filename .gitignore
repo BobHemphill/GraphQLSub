@@ -1,0 +1,9 @@
+# WebStorm IDE
+.idea/
+
+# node
+node_modules/
+
+# build
+server/build/
+
