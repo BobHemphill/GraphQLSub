@@ -4,4 +4,4 @@ import schema from "./graphql.schema";
 export default graphqlHTTP({
     schema,
     graphiql: true,
-})
+});

@@ -4,4 +4,3 @@ import query from "./queries";
 export default new GraphQLSchema({
     query,
 });
-
