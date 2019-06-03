@@ -3,7 +3,7 @@ import { userData } from "../../user/user.data";
 import userType from "../../user/user.graphType";
 
 export default new GraphQLObjectType({
-    name: "Root",
+    name: "RootQuery",
     fields: {
         me: {
             type: userType,

@@ -1,0 +1,14 @@
+schema {
+  query: RootQuery
+}
+
+type RootQuery {
+  me: User
+  users: [User]
+}
+
+type User {
+  """The ID of an object"""
+  id: ID!
+  displayName: String
+}

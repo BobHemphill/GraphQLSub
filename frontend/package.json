@@ -1,0 +1,31 @@
+{
+  "name": "GraphqlSub",
+  "version": "1.0.0",
+  "description": "WS communication with GraphQL Subscriptions and React Relay",
+  "author": "Robert J Hemphill <bob.hemphill@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "relay": "relay-compiler --src ./src --schema ./src/relay/schema.graphql"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "babel-plugin-relay": "^4.0.0",
+    "get-graphql-schema": "^2.1.2",
+    "graphql": "^14.3.1",
+    "relay-compiler": "^4.0.0",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2",
+    "webpack-dev-server": "^3.5.1"
+  },
+  "dependencies": {
+    "found": "^0.3.21",
+    "found-relay": "^0.3.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-relay": "^4.0.0"
+  }
+}
