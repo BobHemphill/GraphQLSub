@@ -1,5 +1,5 @@
 {
-  "name": "GraphqlSub",
+  "name": "GraphqlSubServer",
   "version": "1.0.0",
   "engines": {
     "node": "^11.0.0"
@@ -9,8 +9,8 @@
   "license": "MIT",
   "scripts": {
     "predev": "yarn build",
-    "dev": "dotenv -e server/.env node server/build",
-    "lint": "tslint -c tslint.json \"server/src/**/*.ts\"",
+    "dev": "dotenv -e .env node build",
+    "lint": "tslint -c tslint.json \"src/**/*.ts\"",
     "build": "tsc -p tsconfig.json"
   },
   "dependencies": {

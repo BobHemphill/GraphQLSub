@@ -2,7 +2,7 @@
   "compilerOptions": {
     "module": "commonjs",
     "target": "es6",
-    "outDir": "server/build"
+    "outDir": "build"
   },
   "exclude": [
     "node_modules"
