@@ -1,1 +1,1 @@
-export const PORT = process.env.PORT;
+export const PORT = parseInt(process.env.PORT, 10);

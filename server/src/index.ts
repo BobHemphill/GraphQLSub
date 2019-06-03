@@ -1,3 +1,4 @@
 import * as env from "./env";
+import app from "./app";
 
-console.log(`starting on PORT ${env.PORT}`);
+app(env);
