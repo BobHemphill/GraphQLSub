@@ -23,7 +23,8 @@
   },
   "dependencies": {
     "found": "^0.3.21",
-    "found-relay": "^0.3.1",
+    "found-relay": "0.4.0-alpha.7",
+    "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-relay": "^4.0.0"

@@ -8,3 +8,5 @@ frontend/node_modules/
 # build
 server/build/
 
+# relay
+*__generated__*/

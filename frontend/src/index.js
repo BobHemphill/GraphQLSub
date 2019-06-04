@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-
-const title = 'React Webpack Babel Setup';
+import Router from './router';
+import relayEnvironment from './relay/environment';
 
 ReactDOM.render(
-<div>{title}</div>,
+<Router environment={relayEnvironment} />,
     document.getElementById('app')
 );
