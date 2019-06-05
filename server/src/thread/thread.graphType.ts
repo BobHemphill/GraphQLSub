@@ -1,18 +1,18 @@
 import { GraphQLList, GraphQLNonNull, GraphQLObjectType, GraphQLString } from "graphql";
 import { globalIdField } from "graphql-relay";
-import { threadDataByUserId } from "../thread/thread.data";
-import ThreadType from "../thread/thread.graphType";
+import { messageDataByThreadId } from "../message/message.data";
+import MessageType from "../message/message.graphType";
 
 export default new GraphQLObjectType({
-    name: "User",
+    name: "Thread",
     fields: () => ({
         id: globalIdField(),
         displayName: {
             type: new GraphQLNonNull(GraphQLString),
         },
-        threads: {
-            type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(ThreadType))),
-            resolve: (user) => threadDataByUserId[user.id] || [],
+        messages: {
+            type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(MessageType))),
+            resolve: (thread) => messageDataByThreadId[thread.id] || [],
         },
     }),
 });
