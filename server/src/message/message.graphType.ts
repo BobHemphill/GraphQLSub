@@ -4,6 +4,8 @@ import { threadDataById } from "../thread/thread.data";
 import ThreadType from "../thread/thread.graphType";
 import { userDataById } from "../user/user.data";
 import UserType from "../user/user.graphType";
+import { MessageEntity } from "./message.data";
+import { nodeInterface } from "../relay/node";
 
 export default new GraphQLObjectType({
     name: "Message",
@@ -14,11 +16,12 @@ export default new GraphQLObjectType({
         },
         owner: {
             type: new GraphQLNonNull(UserType),
-            resolve: (message) => userDataById[message.owner],
+            resolve: (message: MessageEntity) => userDataById[message.owner],
         },
         thread: {
             type: new GraphQLNonNull(ThreadType),
-            resolve: (message) => threadDataById[message.thread],
+            resolve: (message: MessageEntity) => threadDataById[message.thread],
         },
     }),
+    interfaces: [nodeInterface],
 });

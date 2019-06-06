@@ -1,30 +1,46 @@
 import { threadData } from "../thread/thread.data";
 import { userData } from "../user/user.data";
+import { IEntity, IGetById } from "../repository";
 
-const message1 = {
+export type MessageEntity = {
+    id: number
+    text: string
+    owner: number
+    thread: number
+}
+
+export interface IMessageEntity extends IEntity, MessageEntity { }
+export interface IMessageIndex extends IGetById {
+    [key: number]: IMessageEntity;
+};
+export interface IMessageMultiIndex {
+    [key: number]: IMessageEntity[];
+};
+
+const message1: IMessageEntity = {
     id: 1,
     text: "First chat bro",
     owner: userData[0].id,
     thread: threadData[0].id,
 };
-const message2 = {
+const message2: IMessageEntity = {
     id: 2,
     text: "Right back at you",
     owner: userData[1].id,
     thread: threadData[0].id,
 };
-const message3 = {
+const message3: IMessageEntity = {
     id: 3,
     text: "You there?",
     owner: userData[1].id,
     thread: threadData[0].id,
 };
-export const messageData = [message1, message2, message3];
-export const messageById = {
+export const messageData: IMessageEntity[] = [message1, message2, message3];
+export const messageById: IMessageIndex = {
     [message1.id]: message1,
     [message2.id]: message2,
     [message3.id]: message3,
 };
-export const messageDataByThreadId = {
+export const messageDataByThreadId : IMessageMultiIndex = {
     [threadData[0].id]: [message1, message2, message3],
 };

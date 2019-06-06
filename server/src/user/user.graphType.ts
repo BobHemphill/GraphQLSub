@@ -2,6 +2,7 @@ import { GraphQLList, GraphQLNonNull, GraphQLObjectType, GraphQLString } from "g
 import { globalIdField } from "graphql-relay";
 import { threadDataByUserId } from "../thread/thread.data";
 import ThreadType from "../thread/thread.graphType";
+import { nodeInterface } from "../relay/node";
 
 export default new GraphQLObjectType({
     name: "User",
@@ -15,4 +16,5 @@ export default new GraphQLObjectType({
             resolve: (user) => threadDataByUserId[user.id] || [],
         },
     }),
+    interfaces: [nodeInterface],
 });

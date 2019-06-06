@@ -2,7 +2,7 @@ schema {
   query: RootQuery
 }
 
-type Message {
+type Message implements Node {
   """The ID of an object"""
   id: ID!
   text: String!
@@ -10,19 +10,31 @@ type Message {
   thread: Thread!
 }
 
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
 type RootQuery {
   me: User
   users: [User]
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
 }
 
-type Thread {
+type Thread implements Node {
   """The ID of an object"""
   id: ID!
   displayName: String!
   messages: [Message!]!
 }
 
-type User {
+type User implements Node {
   """The ID of an object"""
   id: ID!
   displayName: String!
