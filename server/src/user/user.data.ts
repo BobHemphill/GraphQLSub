@@ -1,11 +1,9 @@
 import { IEntity, IGetById } from "../repository";
 
-export type UserEntity = {
-    id: number
-    displayName: string
-}
-
-export interface IUserEntity extends IEntity, UserEntity { }
+export interface IUserEntity extends IEntity {
+    id: number;
+    displayName: string;
+ }
 export interface IUserIndex extends IGetById {
     [key: number]: IUserEntity;
 }

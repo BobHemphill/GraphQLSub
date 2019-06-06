@@ -1,16 +1,22 @@
-import { Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";
 import * as graphqlHTTP from "express-graphql";
+import { GraphQLError } from "graphql";
+import { IAppDeps } from "../appDeps";
+import { IUserEntity } from "../user/user.data";
 import schema from "./graphql.schema";
-import { UserEntity } from "../user/user.data";
 
 export interface IGraphQLContext {
-    user: UserEntity;
+    user: IUserEntity;
+    deps: IAppDeps;
 }
 
-export default function middleware(req: Request, res: Response) {
-    graphqlHTTP({
-        schema,
-        graphiql: true,
-        context: { user: res.locals.user },
-    })(req, res);
-}
+const middlewareFactory = (deps: IAppDeps) => {
+    return (req: Request, res: Response, next: NextFunction) => {
+        graphqlHTTP({
+            schema,
+            graphiql: true,
+            context: { user: res.locals.user, deps },
+        })(req, res);
+    };
+};
+export default middlewareFactory;

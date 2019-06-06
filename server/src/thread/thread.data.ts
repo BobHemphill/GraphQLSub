@@ -1,11 +1,10 @@
-import { userData } from "../user/user.data";
 import { IEntity, IGetById } from "../repository";
+import { userData } from "../user/user.data";
 
-export type ThreadEntity = {
-    id: number
-    displayName: string
-};
-export interface IThreadEntity extends IEntity, ThreadEntity {}
+export interface IThreadEntity extends IEntity {
+    id: number;
+    displayName: string;
+}
 export interface IThreadIndex extends IGetById {
     [key: number]: IThreadEntity;
 }

@@ -1,21 +1,19 @@
+import { IEntity, IGetById } from "../repository";
 import { threadData } from "../thread/thread.data";
 import { userData } from "../user/user.data";
-import { IEntity, IGetById } from "../repository";
 
-export type MessageEntity = {
-    id: number
-    text: string
-    owner: number
-    thread: number
+export interface IMessageEntity extends IEntity {
+    id: number;
+    text: string;
+    owner: number;
+    thread: number;
 }
-
-export interface IMessageEntity extends IEntity, MessageEntity { }
 export interface IMessageIndex extends IGetById {
     [key: number]: IMessageEntity;
-};
+}
 export interface IMessageMultiIndex {
     [key: number]: IMessageEntity[];
-};
+}
 
 const message1: IMessageEntity = {
     id: 1,
@@ -41,6 +39,6 @@ export const messageById: IMessageIndex = {
     [message2.id]: message2,
     [message3.id]: message3,
 };
-export const messageDataByThreadId : IMessageMultiIndex = {
+export const messageDataByThreadId: IMessageMultiIndex = {
     [threadData[0].id]: [message1, message2, message3],
 };

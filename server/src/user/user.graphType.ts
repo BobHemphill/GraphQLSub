@@ -1,8 +1,8 @@
 import { GraphQLList, GraphQLNonNull, GraphQLObjectType, GraphQLString } from "graphql";
 import { globalIdField } from "graphql-relay";
+import { nodeInterface } from "../relay/node";
 import { threadDataByUserId } from "../thread/thread.data";
 import ThreadType from "../thread/thread.graphType";
-import { nodeInterface } from "../relay/node";
 
 export default new GraphQLObjectType({
     name: "User",

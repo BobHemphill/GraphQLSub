@@ -1,11 +1,11 @@
 import { GraphQLNonNull, GraphQLObjectType, GraphQLString } from "graphql";
 import { globalIdField } from "graphql-relay";
+import { nodeInterface } from "../relay/node";
 import { threadDataById } from "../thread/thread.data";
 import ThreadType from "../thread/thread.graphType";
 import { userDataById } from "../user/user.data";
 import UserType from "../user/user.graphType";
-import { MessageEntity } from "./message.data";
-import { nodeInterface } from "../relay/node";
+import { IMessageEntity } from "./message.data";
 
 export default new GraphQLObjectType({
     name: "Message",
@@ -16,12 +16,12 @@ export default new GraphQLObjectType({
         },
         owner: {
             type: new GraphQLNonNull(UserType),
-            resolve: (message: MessageEntity) => userDataById[message.owner],
+            resolve: (message: IMessageEntity) => userDataById[message.owner],
         },
         thread: {
             type: new GraphQLNonNull(ThreadType),
-            resolve: (message: MessageEntity) => threadDataById[message.thread],
+            resolve: (message: IMessageEntity) => threadDataById[message.thread],
         },
     }),
-    interfaces: [nodeInterface],
+    // interfaces: [nodeInterface],
 });

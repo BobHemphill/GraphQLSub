@@ -1,7 +1,7 @@
 import { GraphQLList, GraphQLObjectType } from "graphql";
+import { nodeField } from "../../relay/node";
 import { userData, userDataById } from "../../user/user.data";
 import userType from "../../user/user.graphType";
-import { nodeField } from "../../relay/node";
 
 export default new GraphQLObjectType({
     name: "RootQuery",
