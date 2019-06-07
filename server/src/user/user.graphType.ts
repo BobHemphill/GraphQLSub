@@ -3,6 +3,7 @@ import { globalIdField } from "graphql-relay";
 import { nodeInterface } from "../relay/node";
 import { threadDataByUserId } from "../thread/thread.data";
 import ThreadType from "../thread/thread.graphType";
+import { IUserEntity} from "./user.data";
 
 export default new GraphQLObjectType({
     name: "User",
@@ -17,4 +18,5 @@ export default new GraphQLObjectType({
         },
     }),
     interfaces: [nodeInterface],
+    isTypeOf: (obj) => obj.__type === "User",
 });

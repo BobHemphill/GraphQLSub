@@ -1,12 +1,10 @@
 import { GraphQLObjectType } from "graphql";
 import { fromGlobalId, nodeDefinitions } from "graphql-relay";
 import { messageById } from "../message/message.data";
-import messageGraphType from "../message/message.graphType";
 import { IGetById } from "../repository";
 import { threadDataById } from "../thread/thread.data";
-import threadGraphType from "../thread/thread.graphType";
 import { userDataById } from "../user/user.data";
-import userGraphType from "../user/user.graphType";
+import { IGraphQLContext } from "../graphql/graphql.express";
 
 interface IObjectReposiotyIndex {
     [key: string]: IGetById;
@@ -19,20 +17,7 @@ const objectRepositoryIndex: IObjectReposiotyIndex = {
 
 const getObjectFromGlobalId = async (globalId: string) => {
     const { id, type } = fromGlobalId(globalId);
-    return objectRepositoryIndex[type][id];
+    return { ...objectRepositoryIndex[type][id], __type: type };
 };
 
-interface ITypeIndex {
-    [key: string]: GraphQLObjectType;
-}
-const typeIndex: ITypeIndex = {
-    User: userGraphType,
-    Thread: threadGraphType,
-    Message: messageGraphType,
-};
-const getTypeFromObject = (obj: any): GraphQLObjectType => {
-    const { name } = obj.constructor;
-    return typeIndex[name];
-};
-
-export const { nodeInterface, nodeField } = nodeDefinitions(getObjectFromGlobalId, getTypeFromObject);
+export const { nodeInterface, nodeField } = nodeDefinitions(getObjectFromGlobalId);

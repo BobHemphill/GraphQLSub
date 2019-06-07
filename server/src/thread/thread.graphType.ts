@@ -17,5 +17,6 @@ export default new GraphQLObjectType({
             resolve: (thread: IThreadEntity) => messageDataByThreadId[thread.id] || [],
         },
     }),
-    // interfaces: [nodeInterface],
+    interfaces: [nodeInterface],
+    isTypeOf: (obj) => obj.__type === "Thread",
 });

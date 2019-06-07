@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from "express";
 import * as graphqlHTTP from "express-graphql";
-import { GraphQLError } from "graphql";
 import { IAppDeps } from "../appDeps";
 import { IUserEntity } from "../user/user.data";
 import schema from "./graphql.schema";
