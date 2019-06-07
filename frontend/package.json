@@ -5,9 +5,11 @@
   "author": "Robert J Hemphill <bob.hemphill@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "predev": "yarn relay",
     "dev": "webpack-dev-server --config ./webpack.config.js --mode development",
     "relay": "relay-compiler --src ./src --schema ./src/relay/schema.graphql",
-    "relay-update": "./node_modules/.bin/get-graphql-schema http://localhost:3000/graphql > src/relay/schema.graphql & yarn relay",
+    "relay-update": "./node_modules/.bin/get-graphql-schema http://localhost:3000/graphql > src/relay/schema.graphql",
+    "postrelay-update": "yarn relay",
     "lint": "eslint \"{src/**/*.js,}\" --quiet"
   },
   "devDependencies": {

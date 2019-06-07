@@ -9,13 +9,20 @@
 ## Recommended
 
 - [nvm](https://github.com/creationix/nvm#installation) over a normal node install
+- [graphql playground](https://github.com/prisma/graphql-playground) client supporting graphql spec.
 
 # Getting Started
-
+You'll need a server(hosting on localhost:3000)
 ```bash
-git clone git@github.com:BobHemphill/graphqlsub.git
+cd server
 yarn
-yarn build
-dotenv -e server/.env yarn dev
+yarn dev
+```
+
+You'll need a client(webpack dev server localhost:8080)
+```bash
+cd frontend
+yarn
+yarn dev
 ```
 
