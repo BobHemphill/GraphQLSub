@@ -1,5 +1,18 @@
 schema {
   query: RootQuery
+  mutation: RootMutation
+  subscription: RootSubscription
+}
+
+input addMessageInput {
+  text: String!
+  threadId: ID!
+  clientMutationId: String
+}
+
+type addMessagePayload {
+  message: Message!
+  clientMutationId: String
 }
 
 type Message implements Node {
@@ -10,10 +23,25 @@ type Message implements Node {
   thread: Thread!
 }
 
+input messageAddedSubscriptionInput {
+  threadId: ID!
+  clientSubscriptionId: String
+}
+
+type messageAddedSubscriptionPayload {
+  message: Message!
+  clientSubscriptionId: String
+}
+
 """An object with an ID"""
 interface Node {
   """The id of the object."""
   id: ID!
+}
+
+type RootMutation {
+  """create a new message in a thread"""
+  addMessage(input: addMessageInput!): addMessagePayload
 }
 
 type RootQuery {
@@ -25,6 +53,10 @@ type RootQuery {
     """The ID of an object"""
     id: ID!
   ): Node
+}
+
+type RootSubscription {
+  messageAddedSubscription(input: messageAddedSubscriptionInput!): messageAddedSubscriptionPayload
 }
 
 type Thread implements Node {
@@ -40,3 +72,4 @@ type User implements Node {
   displayName: String!
   threads: [Thread!]!
 }
+

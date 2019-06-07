@@ -3,13 +3,13 @@ import { createFragmentContainer, graphql } from "react-relay";
 import { withRouter } from "found";
 
 const UserThreadSelector = props => {
-    const onClick = () => {
-        props.router.push("/threads/1")
+    const onClick = (selectedThreadId) => {
+        props.router.push(`/threads/${selectedThreadId}`)
     }
   return (
     <div>
       {props.me.threads.map(t => (
-        <div key={t.id} onClick={onClick}>{t.displayName}</div>
+        <div key={t.id} onClick={() => onClick(t.id)}>{t.displayName}</div>
       ))}
     </div>
   );

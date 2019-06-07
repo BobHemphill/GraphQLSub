@@ -1,15 +1,17 @@
 import * as React from "react";
 import { createFragmentContainer, graphql } from "react-relay";
 import { withRouter } from "found";
+import StorageService from "../session/storage-service";
 
 const UserSelector = props => {
-  const onClick = () => {
-    props.router.push("/users/1");
+  const onClick = (selectedUserId) => {
+    StorageService.setUser(selectedUserId);
+    props.router.push(`/threads/`);
   }
   return (
     <div>
       {props.root.users.map(u => (
-        <div onClick={onClick} key={u.id}>{u.displayName}</div>
+        <div onClick={() => onClick(u.id)} key={u.id}>{u.displayName}</div>
       ))}
     </div>
   );

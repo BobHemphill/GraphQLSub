@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "webpack-dev-server --config ./webpack.config.js --mode development",
     "relay": "relay-compiler --src ./src --schema ./src/relay/schema.graphql",
+    "relay-update": "./node_modules/.bin/get-graphql-schema http://localhost:3000/graphql > src/relay/schema.graphql & yarn relay",
     "lint": "eslint \"{src/**/*.js,}\" --quiet"
   },
   "devDependencies": {
@@ -29,11 +30,14 @@
     "webpack-dev-server": "^3.5.1"
   },
   "dependencies": {
+    "apollo-link": "^1.2.11",
+    "apollo-link-ws": "^1.0.17",
     "found": "^0.3.21",
     "found-relay": "0.4.0-alpha.7",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-relay": "^4.0.0"
+    "react-relay": "^4.0.0",
+    "subscriptions-transport-ws": "^0.9.16"
   }
 }
