@@ -4,9 +4,9 @@ import { WebSocketLink } from 'apollo-link-ws';
 import { SubscriptionClient } from 'subscriptions-transport-ws';
 import StorageService from "../session/storage-service";
 
-function fetchQuery(operation, variables) {
+const fetchFn = async (operation, variables) => {
   const userId = StorageService.getUser();
-  return fetch("http://localhost:3000/graphql", {
+  const response = await fetch("http://localhost:3000/graphql", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -16,9 +16,8 @@ function fetchQuery(operation, variables) {
       query: operation.text,
       variables
     })
-  }).then(response => {
-    return response.json();
   });
+  return response.json();
 }
 
 const subscriptionClient = new SubscriptionClient("ws://localhost:3000/graphql", {
@@ -31,7 +30,7 @@ const subFn = (operation, variables) =>
 				variables,
 			});
 const environment = new Environment({
-  network: Network.create(fetchQuery, subFn),
+  network: Network.create(fetchFn, subFn),
   store: new Store(new RecordSource())
 });
 

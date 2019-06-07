@@ -10,6 +10,7 @@ const UserSelector = props => {
   }
   return (
     <div>
+      <h3>Select a user</h3>
       {props.root.users.map(u => (
         <div onClick={() => onClick(u.id)} key={u.id}>{u.displayName}</div>
       ))}

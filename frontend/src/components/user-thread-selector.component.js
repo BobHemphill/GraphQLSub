@@ -8,6 +8,7 @@ const UserThreadSelector = props => {
     }
   return (
     <div>
+      <h3>Select a thread</h3>
       {props.me.threads.map(t => (
         <div key={t.id} onClick={() => onClick(t.id)}>{t.displayName}</div>
       ))}
