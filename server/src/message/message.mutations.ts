@@ -30,6 +30,7 @@ export const addMessage = mutationWithClientMutationId({
             owner: ownerId,
             thread: threadId,
             text: input.text,
+            __type: "Message",
         };
 
         messageData.push(newMessage);
